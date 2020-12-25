@@ -36,5 +36,12 @@ namespace WpfApp2
             this.Password = Password;
             this.Email = Email;
         }
+
+        /*public override string ToString()
+        {
+            return "User: " + login + "Email " + email;
+        }*/
+
+
     }
 }
