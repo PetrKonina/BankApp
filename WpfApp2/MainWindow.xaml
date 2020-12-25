@@ -12,15 +12,15 @@
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
-            
+
             <StackPanel>
                 <TextBlock Text="Hello!" FontSize="30" FontWeight="Bold" Margin="-3,0,3,20"></TextBlock>
-                                
+
                 <Grid Margin="0 0 0 20">
                     <Button HorizontalAlignment="Left" Content=" Registration "></Button>
-                    <Button HorizontalAlignment="Right" Content="Sign in" Style="{StaticResource MaterialDesignFlatButton}"></Button>
+                    <Button Click="Button_sign_in_Click" HorizontalAlignment="Left" Content="Sign in" Style="{StaticResource MaterialDesignFlatButton}" Margin="414,0,0,0"></Button>
                 </Grid>
-                
+
                 <TextBox Name="textBoxLogin" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                 <PasswordBox Name="textBoxPassword" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
                 <PasswordBox Name="textBoxPasswordRepeat" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>

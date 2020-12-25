@@ -17,7 +17,7 @@
                 <TextBlock Text="Authorization" FontSize="30" FontWeight="Bold" Margin="-3,0,3,20"></TextBlock>
 
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content=" Registration "></Button>
+                    <Button HorizontalAlignment="Left" Content=" Registration " Click="Button_Click"></Button>
                     <Button HorizontalAlignment="Right" Content="Sign in" Style="{StaticResource MaterialDesignFlatButton}"></Button>
                 </Grid>
 
