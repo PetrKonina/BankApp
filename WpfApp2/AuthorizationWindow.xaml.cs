@@ -39,6 +39,10 @@ namespace WpfApp2
             if(authUser != null)
             {
                 MessageBox.Show("correct");
+
+                adminPage userPageWindow = new adminPage();
+                userPageWindow.Show();
+                Hide();
             }
             else
             {
@@ -47,5 +51,12 @@ namespace WpfApp2
 
 
             }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Hide();
+        }
     }
 }

@@ -101,7 +101,18 @@ namespace WpfApp2
 
                 db.Users.Add(user);
                 db.SaveChanges();
+
+                adminPage userPageWindow = new adminPage();
+                userPageWindow.Show();
+                Hide();
             }
+        }
+
+        private void Button_sign_in_Click(object sender, RoutedEventArgs e)
+        {
+            AuthorizationWindow authorizationWindow = new AuthorizationWindow();
+            authorizationWindow.Show();
+            Hide();
         }
     }
 }
