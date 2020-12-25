@@ -8,7 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="application for user" Height="500" Width="1000">
     <Grid Background="#fff">
-        <Border MinWidth="400" MaxWidth="550" Margin="15,75,15,0" Background="#fff"  VerticalAlignment="Top" Padding="30"  CornerRadius="20" Grid.RowSpan="2">
+        <Border MinWidth="400" MaxWidth="550" Margin="15,75,15,0" Background="#fff"  VerticalAlignment="Center" Padding="30"  CornerRadius="20" Grid.RowSpan="2">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="30" Color="LightGray" ShadowDepth="0"></DropShadowEffect>
             </Border.Effect>
@@ -25,7 +25,7 @@
                 <PasswordBox Name="textBoxPassword" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
                 <PasswordBox Name="textBoxPasswordRepeat" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
                 <TextBox Name="textBoxEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-                <Button Content="Registration" Margin="0 0 0 20" Click="Button_Reg_Click"></Button>
+                <Button x:Name="regButton" Content="Registration" Margin="0 20 0 20" Click="Button_Reg_Click"></Button>
             </StackPanel>
         </Border>
 

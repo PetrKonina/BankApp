@@ -13,7 +13,17 @@
 
             <StackPanel>
                 <TextBlock Text="Admin Page" FontSize="30" FontWeight="Bold" Margin="-3,0,3,20"></TextBlock>
-                <ListView x:Name="listOfUsers" Margin="10"></ListView>
+                <ListView x:Name="listOfUsers" Margin="10">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text = "{Binding login}" FontWeight="Bold"/>
+                                <TextBlock Text = ", "/>
+                                <TextBlock Text = "{Binding email}"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackPanel>
         </Border>
     </Grid>

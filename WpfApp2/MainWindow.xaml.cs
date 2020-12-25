@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -27,6 +28,13 @@ namespace WpfApp2
             InitializeComponent();
 
             db = new ApplicationContext();
+
+            DoubleAnimation regAnimation = new DoubleAnimation();
+
+            regAnimation.From = 0;
+            regAnimation.To = 300;
+            regAnimation.Duration = TimeSpan.FromSeconds(3);
+            regButton.BeginAnimation(Button.WidthProperty, regAnimation);
         }
 
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
