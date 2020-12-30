@@ -36,11 +36,17 @@ namespace WpfApp2
                 authUser = db.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
             }
 
-            if(authUser != null)
+            if(authUser != null && authUser.login == "admin1")
+            {
+                adminPage userPageWindow = new adminPage();
+                userPageWindow.Show();
+                Hide();
+            }
+            else if (authUser !=null)
             {
                 MessageBox.Show("correct");
 
-                adminPage userPageWindow = new adminPage();
+                userPage userPageWindow = new userPage();
                 userPageWindow.Show();
                 Hide();
             }
