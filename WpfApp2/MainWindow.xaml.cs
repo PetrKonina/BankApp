@@ -46,7 +46,7 @@ namespace WpfApp2
             }
             else
             {
-                textBoxLogin.ToolTip = "login should be more than 5 and less than 16 symbols and starts with a charecter";
+                textBoxLogin.ToolTip = "login should be more than 4 and less than 16 symbols and starts with a symbol";
                 textBoxLogin.Background = Brushes.DarkRed;
             }
 
@@ -112,7 +112,7 @@ namespace WpfApp2
                 Regex startsWithCharacter = new Regex(@"^[a-zA-Z]");
                 Regex hasBeetween8And15Chars = new Regex(@".{5,15}");
 
-                return startsWithCharacter.IsMatch(password) && hasBeetween8And15Chars.IsMatch(password);
+                return startsWithCharacter.IsMatch(login) && hasBeetween8And15Chars.IsMatch(login);
             }
 
             bool passwordValidation()
