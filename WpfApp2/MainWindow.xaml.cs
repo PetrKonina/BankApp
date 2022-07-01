@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Net.Mail;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+
 
 namespace WpfApp2
 {
@@ -69,7 +71,7 @@ namespace WpfApp2
                 textBoxPasswordRepeat.Background = Brushes.DarkRed;
             }
 
-            if (email.Length > 5 && email.Contains("@") || email.Contains("."))
+            if (CheckingEmail(email))
             {
                 emailCorrect = true;
                 textBoxEmail.Background = Brushes.White;
@@ -88,6 +90,20 @@ namespace WpfApp2
                 createNewUser();
 
                 changeActiveWindow();
+            }
+
+            bool CheckingEmail(string emailAddress)
+            {
+                try
+                {
+                    MailAddress m = new MailAddress(emailAddress);
+
+                    return true;
+                }
+                catch (FormatException)
+                {
+                    return false;
+                }
             }
 
             void changeActiveWindow()
