@@ -30,7 +30,7 @@ namespace WpfApp2
             }
             else if (authUser !=null)
             {
-                MessageBox.Show("correct");
+                Print("correct");
 
                 userPage userPageWindow = new userPage();
                 userPageWindow.Show();
@@ -38,11 +38,14 @@ namespace WpfApp2
             }
             else
             {
-                MessageBox.Show("incorrect");
+                Print("incorrect");
             }
 
-
+            void Print(string text)
+            {
+                MessageBox.Show(text);
             }
+        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
