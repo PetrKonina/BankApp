@@ -28,7 +28,7 @@
             </Button.RenderTransform>
         </Button>
         <TextBox materialDesign:HintAssist.Hint="percent" x:Name="Percent" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.36,3.37" Margin="101,145,0,0"  Grid.Column="1" Grid.ColumnSpan="4"/>
-        <TextBox x:Name="Duration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.36,3.37" Margin="101,205,0,0"  Grid.Column="1" Grid.ColumnSpan="4"/>
+        <TextBox materialDesign:HintAssist.Hint="duration" x:Name="Duration" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.36,3.37" Margin="101,205,0,0"  Grid.Column="1" Grid.ColumnSpan="4"/>
         <Label Content="investments" Grid.Column="1" HorizontalAlignment="Left" Margin="2,81,0,0" VerticalAlignment="Top" Height="26" Width="73"/>
         <Label Content="percent" Grid.Column="1" HorizontalAlignment="Left" Margin="20,141,0,0" VerticalAlignment="Top" Height="26" Width="50"/>
         <Label Content="duration" Grid.Column="1" HorizontalAlignment="Left" Margin="15,201,0,0" VerticalAlignment="Top" Height="26" Width="55"/>

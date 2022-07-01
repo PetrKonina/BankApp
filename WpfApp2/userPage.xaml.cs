@@ -17,16 +17,32 @@ namespace WpfApp2
         private void saveVariables(double balance = 0, int expenses = 0)
 
         {
-            double percent, investments;
-            int duration;
-            string tPercent = Percent.Text;
-            string tSalary = Salary.Text;
-            string tDuration = Duration.Text;
+            double percent = 0, investments = -1;
+            int duration = 0;
+            string tPercent = Percent.Text.Trim();
+            string tSalary = Salary.Text.Trim();
+            string tDuration = Duration.Text.Trim();
 
             Double.TryParse(tPercent, out percent);
+            if(percent == 0)
+            {
+                MessageBox.Show("Enter percents correctly(it should only contain numbers without spaces and it should not be zero)");
+            }
             percent = percent / 1200 + 1;
+
             Double.TryParse(tSalary, out investments);
+            if (investments == 0)
+            {
+                MessageBox.Show("Enter investments correctly(it should only contain numbers without spaces");
+                Salary.ToolTip = "Enter investments correctly(it should only contain numbers without spaces";
+            }
+
             Int32.TryParse(tDuration, out duration);
+            if (duration == 0)
+            {
+                MessageBox.Show("Enter duration correctly(it should only contain numbers without spaces and it should not be zero)");
+                Duration.ToolTip = "Enter duration correctly(it should only contain numbers without spaces and it should not be zero)";
+            }
 
             if (expenses > 0)
             {
@@ -41,7 +57,7 @@ namespace WpfApp2
         private void calculateProfit(double balance, double investments, double percent, int duration)
         {
             ChartValues<int> znac = new ChartValues<int> { };
-            int result = (int)balance;
+            double result = (int)balance;
             string abels = null;
             int ekstremumPoints = duration;
             if (ekstremumPoints > 10)
@@ -57,8 +73,7 @@ namespace WpfApp2
                     abels += i;
                 }
             }
-            balance = (int)balance;
-            result = (int)balance - result;
+            result = balance - result;
             Changes.Text = result.ToString();
             Result.Text = balance.ToString();
 
@@ -81,7 +96,7 @@ namespace WpfApp2
                 };
 
 
-                YFormatter = value => "Month №" + (++value);
+                YFormatter = value => "Period №" + (++value);
             }
             else
             {
