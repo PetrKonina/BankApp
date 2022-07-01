@@ -1,22 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfApp2
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthorizationWindow.xaml
-    /// </summary>
     public partial class AuthorizationWindow : Window
     {
         public AuthorizationWindow()
@@ -38,8 +24,8 @@ namespace WpfApp2
 
             if(authUser != null && authUser.login == "admin1")
             {
-                adminPage userPageWindow = new adminPage();
-                userPageWindow.Show();
+                adminPage adminPageWindow = new adminPage();
+                adminPageWindow.Show();
                 Hide();
             }
             else if (authUser !=null)

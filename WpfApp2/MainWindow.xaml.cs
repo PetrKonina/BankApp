@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp2
 {
@@ -45,26 +35,26 @@ namespace WpfApp2
             string passwordRepeat = textBoxPasswordRepeat.Password.Trim();
             string email = textBoxEmail.Text.ToLower().Trim();
 
-            if ((login.Length > 5) && (login.Length < 12))
+            if ((login.Length > 5) || (login.Length < 15))
             {
                 loginCorrect = true;
                 textBoxLogin.Background = Brushes.White;
             }
             else
             {
-                textBoxLogin.ToolTip = "login should be more than 5 characters";
+                textBoxLogin.ToolTip = "login should be more than 5 characters and less than 15";
                 textBoxLogin.Background = Brushes.DarkRed;
             }
 
 
-            if ((password.Length > 7) && (password.Length < 20))
+            if ((password.Length > 7) || (password.Length < 20))
             {
                 passwordCorrect = true;
                 textBoxPassword.Background = Brushes.White;
             }
             else
             {
-                textBoxPassword.ToolTip = "password should be more than 5 characters";
+                textBoxPassword.ToolTip = "password should be more than 5 characters and less than 20";
                 textBoxPassword.Background = Brushes.DarkRed;
             }
 
@@ -109,9 +99,10 @@ namespace WpfApp2
 
                 db.Users.Add(user);
                 db.SaveChanges();
-
-                adminPage userPageWindow = new adminPage();
-                userPageWindow.Show();
+                userPage userPageShow = new userPage();
+                userPageShow.Show();
+                //adminPage userPageWindow = new adminPage();
+                //userPageWindow.Show();
                 Hide();
             }
         }

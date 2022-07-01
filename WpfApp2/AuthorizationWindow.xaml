@@ -13,8 +13,8 @@
                 <BeginStoryboard>
                     <Storyboard TargetProperty ="Width" TargetName ="signIn">
                         <DoubleAnimation From="0" To="300"
-                                         AutoReverse="True"
-                                         RepeatBehavior="3x"
+                                         AutoReverse="False"
+                                         RepeatBehavior="1x"
                                          Duration="0:0:3"/>
 
 

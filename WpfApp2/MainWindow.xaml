@@ -17,15 +17,15 @@
                 <TextBlock Text="Hello!" FontSize="30" FontWeight="Bold" Margin="-3,0,3,20"></TextBlock>
 
                 <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content=" Registration "></Button>
-                    <Button Click="Button_sign_in_Click" HorizontalAlignment="Left" Content="Sign in" Style="{StaticResource MaterialDesignFlatButton}" Margin="414,0,0,0"></Button>
+                    <Button HorizontalAlignment="Left" Content=" Registration " Style="{StaticResource MaterialDesignFlatButton}" Cursor="Hand"></Button>
+                    <Button Click="Button_sign_in_Click" HorizontalAlignment="Left" Content="Sign in"  Margin="414,0,0,0" Cursor="Hand"></Button>
                 </Grid>
 
                 <TextBox Name="textBoxLogin" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                 <PasswordBox Name="textBoxPassword" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
                 <PasswordBox Name="textBoxPasswordRepeat" materialDesign:HintAssist.Hint="Repeat password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"></PasswordBox>
                 <TextBox Name="textBoxEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-                <Button x:Name="regButton" Content="Registration" Margin="0 20 0 20" Click="Button_Reg_Click"></Button>
+                <Button x:Name="regButton" Content="Registration" Margin="0 20 0 20" Click="Button_Reg_Click" Cursor="Hand"></Button>
             </StackPanel>
         </Border>
 
