@@ -8,6 +8,7 @@ namespace WpfApp2
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// Registration page
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -35,7 +36,7 @@ namespace WpfApp2
             string passwordRepeat = textBoxPasswordRepeat.Password.Trim();
             string email = textBoxEmail.Text.ToLower().Trim();
 
-            if ((login.Length > 5) || (login.Length < 15))
+            if ((login.Length > 5) && (login.Length < 15))
             {
                 loginCorrect = true;
                 textBoxLogin.Background = Brushes.White;
@@ -46,18 +47,16 @@ namespace WpfApp2
                 textBoxLogin.Background = Brushes.DarkRed;
             }
 
-
-            if ((password.Length > 7) || (password.Length < 20))
+            if ((password.Length > 7) && (password.Length < 20))
             {
                 passwordCorrect = true;
                 textBoxPassword.Background = Brushes.White;
             }
             else
             {
-                textBoxPassword.ToolTip = "password should be more than 5 characters and less than 20";
+                textBoxPassword.ToolTip = "password should be more than 7 characters and less than 20";
                 textBoxPassword.Background = Brushes.DarkRed;
             }
-
 
             if (passwordRepeat == password)
             {
@@ -70,8 +69,7 @@ namespace WpfApp2
                 textBoxPasswordRepeat.Background = Brushes.DarkRed;
             }
 
-
-            if (email.Length > 5 || email.Contains("@") || email.Contains("."))
+            if (email.Length > 5 && email.Contains("@") || email.Contains("."))
             {
                 emailCorrect = true;
                 textBoxEmail.Background = Brushes.White;
@@ -82,8 +80,24 @@ namespace WpfApp2
                 textBoxEmail.Background = Brushes.DarkRed;
             }
 
-
             if (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect)
+            {
+                clearData();
+                Print("Everithing is alright");
+
+                createNewUser();
+
+                changeActiveWindow();
+            }
+
+            void changeActiveWindow()
+            {
+                userPage userPageShow = new userPage();
+                userPageShow.Show();
+                Hide();
+            }
+
+            void clearData()
             {
                 textBoxLogin.ToolTip = "";
                 textBoxLogin.Background = Brushes.Transparent;
@@ -93,17 +107,18 @@ namespace WpfApp2
                 textBoxPasswordRepeat.Background = Brushes.Transparent;
                 textBoxEmail.ToolTip = "";
                 textBoxEmail.Background = Brushes.Transparent;
-                MessageBox.Show("Everithing is alright");
+            }
 
+            void createNewUser() 
+            {
                 User user = new User(login, password, email);
-
                 db.Users.Add(user);
                 db.SaveChanges();
-                userPage userPageShow = new userPage();
-                userPageShow.Show();
-                //adminPage userPageWindow = new adminPage();
-                //userPageWindow.Show();
-                Hide();
+            }
+
+            void Print(string text)
+            {
+                MessageBox.Show(text);
             }
         }
 
