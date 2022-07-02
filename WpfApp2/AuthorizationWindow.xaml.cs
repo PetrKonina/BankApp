@@ -10,6 +10,7 @@ namespace WpfApp2
             InitializeComponent();
         }
 
+        //Autorization button
         private void Button_Auth_Click(object sender, RoutedEventArgs e)
         {
             string login = textBoxLogin.Text.Trim();
@@ -21,7 +22,7 @@ namespace WpfApp2
             {
                 authUser = db.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
             }
-
+            // check if loggin in as a admin
             if(authUser != null && authUser.login == "admin1")
             {
                 adminPage adminPageWindow = new adminPage();
@@ -47,6 +48,7 @@ namespace WpfApp2
             }
         }
 
+        // Show registration page button
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();

@@ -54,6 +54,7 @@ namespace WpfApp2
 
         }
 
+        // shows profit and chart
         private void calculateProfit(double balance, double investments, double percent, int duration)
         {
             ChartValues<int> znac = new ChartValues<int> { };
@@ -110,6 +111,7 @@ namespace WpfApp2
             InitializeComponent();
         }
 
+        #region event handlers
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             double sum;
@@ -142,7 +144,7 @@ namespace WpfApp2
 
             saveVariables(balance);
         }
-
+        #endregion
 
     }
 }
