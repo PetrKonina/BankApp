@@ -47,7 +47,7 @@ namespace WpfApp2
             }
             else
             {
-                textBoxLogin.ToolTip = "login should be more than 4 and less than 16 symbols and starts with a symbol";
+                textBoxLogin.ToolTip = "login should be at least 5 and no more than 16 symbols and starts with a symbol";
                 textBoxLogin.Background = Brushes.DarkRed;
             }
 
