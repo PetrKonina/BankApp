@@ -31,6 +31,7 @@ namespace WpfApp2
             regButton.BeginAnimation(Button.WidthProperty, regAnimation);
         }
 
+        #region event handlers
         private void Button_Reg_Click(object sender, RoutedEventArgs e)
         {
             bool loginCorrect = false, passwordCorrect = false, passwordRepeatCorrect = false, emailCorrect = false;
@@ -162,5 +163,6 @@ namespace WpfApp2
             authorizationWindow.Show();
             Hide();
         }
+        #endregion
     }
 }
