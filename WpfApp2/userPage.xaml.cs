@@ -46,7 +46,7 @@ namespace WpfApp2
 
             if (expenses > 0)
             {
-                investments = investments - (investments + expenses);
+                investments -= expenses;
             }
 
             calculateProfit(balance, investments, percent, duration);
@@ -75,9 +75,10 @@ namespace WpfApp2
                 }
             }
             result = balance - result;
-            Changes.Text = result.ToString();
+            Changes.Text = (Math.Round(result, 1)).ToString();
             Result.Text = balance.ToString();
 
+            // Chart creation
             if (chartCreated != true)
             {
                 chartCreated = true;
@@ -95,8 +96,6 @@ namespace WpfApp2
                     },
 
                 };
-
-
                 YFormatter = value => "Period №" + (++value);
             }
             else
@@ -145,6 +144,5 @@ namespace WpfApp2
             saveVariables(balance);
         }
         #endregion
-
     }
 }
