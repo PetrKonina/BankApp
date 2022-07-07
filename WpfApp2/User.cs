@@ -9,19 +9,19 @@
         public string login 
         {
             get { return Login; }
-            set { Login = value; }
+            private set { Login = value; }
         }
 
         public string password
         {
             get { return Password; }
-            set { Password = value; }
+            private set { Password = value; }
         }
 
         public string email
         {
             get { return Email; }
-            set { Email = value; }
+            private set { Email = value; }
         }
 
         public User() { }
