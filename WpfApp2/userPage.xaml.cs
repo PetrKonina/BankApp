@@ -104,12 +104,6 @@ namespace WpfApp2
             }
             DataContext = this;
         }
-
-        public userPage()
-        {
-            InitializeComponent();
-        }
-
         #region event handlers
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -143,6 +137,17 @@ namespace WpfApp2
 
             saveVariables(balance);
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            AuthorizationWindow autorizationWindow = new AuthorizationWindow();
+            autorizationWindow.Show();
+            Hide();
+        }
         #endregion
+        public userPage()
+        {
+            InitializeComponent();
+        }
     }
 }

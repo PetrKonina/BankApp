@@ -84,7 +84,7 @@ namespace WpfApp2
                 textBoxEmail.Background = Brushes.DarkRed;
             }
 
-            if (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect)
+            if (IsRegistrationDataCorrect())
             {
                 clearData();
                 Print("Everithing is alright, you have been registrated");
@@ -92,6 +92,11 @@ namespace WpfApp2
                 createNewUser();
 
                 changeActiveWindow();
+            }
+
+            bool IsRegistrationDataCorrect()
+            {
+                return (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect);
             }
 
             bool CheckingEmail(string emailAddress)
@@ -134,13 +139,13 @@ namespace WpfApp2
 
             void clearData()
             {
-                textBoxLogin.ToolTip = "";
+                textBoxLogin.ToolTip = null;
                 textBoxLogin.Background = Brushes.Transparent;
-                textBoxPassword.ToolTip = "";
+                textBoxPassword.ToolTip = null;
                 textBoxPassword.Background = Brushes.Transparent;
-                textBoxPasswordRepeat.ToolTip = "";
+                textBoxPasswordRepeat.ToolTip = null;
                 textBoxPasswordRepeat.Background = Brushes.Transparent;
-                textBoxEmail.ToolTip = "";
+                textBoxEmail.ToolTip = null;
                 textBoxEmail.Background = Brushes.Transparent;
             }
 
