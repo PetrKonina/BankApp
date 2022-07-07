@@ -24,13 +24,14 @@
             private set { Email = value; }
         }
 
-        public User() { }
-
         public User(string Login, string Password, string Email)
+            :this()
         {
             this.Login = Login;
             this.Password = Password;
             this.Email = Email;
         }
+
+        public User(){}
     }
 }
