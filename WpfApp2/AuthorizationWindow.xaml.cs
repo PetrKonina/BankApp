@@ -19,12 +19,9 @@ namespace WpfApp2
 
             User authUser = null;
             // search profile in table
-            using (ApplicationContext db = new ApplicationContext()) 
-            {
-                authUser = db.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
-            }
+            CheckDatabaseProfiles(out authUser, login, password);
             // check if loggin in as a admin
-            checkIdentaty(authUser);
+            checkIdentity(authUser);
         }
 
         // Show registration page button
@@ -35,7 +32,15 @@ namespace WpfApp2
             Hide();
         }
 
-        void checkIdentaty(User authUser)
+        void CheckDatabaseProfiles(out User authUser, string login, string password)
+        {
+            using (ApplicationContext db = new ApplicationContext())
+            {
+                authUser = db.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
+            }
+        }
+
+        void checkIdentity(User authUser)
         {
             if (authUser != null && authUser.login == "admin1")
             {
