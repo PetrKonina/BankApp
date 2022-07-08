@@ -17,7 +17,7 @@
             <ColumnDefinition Width="259*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="Salary" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.36,3.37" Margin="101,85,0,0" Grid.Column="1" Grid.ColumnSpan="4"/>
-        <Button Content="Calculate" HorizontalAlignment="Left" Margin="170,376,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="Button_Click" Grid.Column="4" RenderTransformOrigin="0.5,0.5">
+        <Button Content="Calculate" HorizontalAlignment="Left" Margin="150,399,0,0" VerticalAlignment="Top" Width="100" Height="27" Click="Button_Click" Grid.Column="4" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -35,12 +35,12 @@
         <TextBlock x:Name="Result" TextAlignment="Center" Grid.Column="4" HorizontalAlignment="Left" Margin="100,422,0,0" TextWrapping="Wrap" Text="Result" VerticalAlignment="Top" Width="202" Height="70" FontSize="40"/>
         <Label Content="initial sum" Grid.Column="1" HorizontalAlignment="Left" Margin="7,21,0,0" VerticalAlignment="Top" Width="64" Height="26"/>
         <TextBox x:Name="Sum" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="101,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Center" Width="120" Text="" Grid.ColumnSpan="4"/>
-        <Button Content="Lazy" Grid.Column="4" HorizontalAlignment="Left" Margin="489,376,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1" Height="25"/>
-        <Button Content="Continue" Grid.Column="1" HorizontalAlignment="Left" Margin="10,376,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_2" Height="25" Grid.ColumnSpan="3"/>
+        <Button Content="Lazy" Grid.Column="4" HorizontalAlignment="Left" Margin="504,397,0,0" VerticalAlignment="Top" Width="90" Click="Button_Click_1" Height="25"/>
+        <Button Content="Continue" Grid.Column="1" HorizontalAlignment="Left" Margin="20,400,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_2" Height="25" Grid.ColumnSpan="3"/>
         <Label Content="Expenses" Grid.Column="1" HorizontalAlignment="Left" Margin="13,261,0,0" VerticalAlignment="Top" Height="26" Width="58"/>
         <TextBox x:Name="Expenses" Grid.Column="1" HorizontalAlignment="Left" Margin="101,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="23" Grid.ColumnSpan="4"/>
         <TextBlock x:Name="Changes"  TextAlignment="Center" HorizontalAlignment="Left" Margin="45,323,0,0" TextWrapping="Wrap" Text="Changes from the last period" VerticalAlignment="Top" Height="94" Width="199" Grid.Column="1" RenderTransformOrigin="0.512,1.5" Grid.ColumnSpan="4"/>
-        <lvc:CartesianChart Height="400" Width="500" Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="100,10,4,123" Grid.Column="4">
+        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Right" Margin="28,10,10,136" Grid.Column="4">
 
             <lvc:CartesianChart.AxisX>
                 <lvc:Axis Title="Month №" FontSize="20" LabelFormatter="{Binding YFormatter}"/>
@@ -49,6 +49,6 @@
                 <lvc:Axis Title="Money" FontSize="20" Labels="{Binding Labels}"/>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <Button Content="Log out" Grid.Column="4" HorizontalAlignment="Left" Margin="486,470,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_3" Height="25"/>
+        <Button Content="Log out" Grid.Column="4" HorizontalAlignment="Left" Margin="500,465,0,0" VerticalAlignment="Top" Width="96" Click="Button_Click_3" Height="25"/>
     </Grid>
 </Window>

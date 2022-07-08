@@ -18,18 +18,37 @@ namespace WpfApp2
 
 
             User authUser = null;
-            using (ApplicationContext db = new ApplicationContext()) 
+            // search profile in table
+            CheckDatabaseProfiles(out authUser, login, password);
+            // check if loggin in as a admin
+            checkIdentity(authUser);
+        }
+
+        // Show registration page button
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Hide();
+        }
+
+        void CheckDatabaseProfiles(out User authUser, string login, string password)
+        {
+            using (ApplicationContext db = new ApplicationContext())
             {
                 authUser = db.Users.Where(b => b.login == login && b.password == password).FirstOrDefault();
             }
-            // check if loggin in as a admin
-            if(authUser != null && authUser.login == "admin1")
+        }
+
+        void checkIdentity(User authUser)
+        {
+            if (authUser != null && authUser.login == "admin1")
             {
                 adminPage adminPageWindow = new adminPage();
                 adminPageWindow.Show();
                 Hide();
             }
-            else if (authUser !=null)
+            else if (authUser != null)
             {
                 Print("correct");
 
@@ -41,19 +60,10 @@ namespace WpfApp2
             {
                 Print("incorrect");
             }
-
-            void Print(string text)
-            {
-                MessageBox.Show(text);
-            }
         }
-
-        // Show registration page button
-        private void Button_Click(object sender, RoutedEventArgs e)
+        void Print(string text)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Hide();
+            MessageBox.Show(text);
         }
     }
 }
