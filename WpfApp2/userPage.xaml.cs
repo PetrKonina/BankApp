@@ -17,8 +17,8 @@ namespace WpfApp2
         private void saveVariables(double balance = 0, int expenses = 0)
 
         {
-            double percent = 0, investments = -1;
-            int duration = 0;
+            double percent, investments;
+            int duration;
             string tPercent = Percent.Text.Trim();
             string tSalary = Salary.Text.Trim();
             string tDuration = Duration.Text.Trim();
@@ -31,14 +31,14 @@ namespace WpfApp2
             percent = percent / 1200 + 1;
 
             Double.TryParse(tSalary, out investments);
-            if (investments == 0)
+            if (investments < 0)
             {
                 MessageBox.Show("Enter investments correctly(it should only contain numbers without spaces");
                 Salary.ToolTip = "Enter investments correctly(it should only contain numbers without spaces";
             }
 
             Int32.TryParse(tDuration, out duration);
-            if (duration == 0)
+            if (duration < 1)
             {
                 MessageBox.Show("Enter duration correctly(it should only contain numbers without spaces and it should not be zero)");
                 Duration.ToolTip = "Enter duration correctly(it should only contain numbers without spaces and it should not be zero)";
@@ -50,10 +50,7 @@ namespace WpfApp2
             }
 
             calculateProfit(balance, investments, percent, duration);
-
-
         }
-
         // shows profit and chart
         private void calculateProfit(double balance, double investments, double percent, int duration)
         {
@@ -77,8 +74,13 @@ namespace WpfApp2
             result = balance - result;
             Changes.Text = (Math.Round(result, 1)).ToString();
             Result.Text = balance.ToString();
-
             // Chart creation
+            chartCreation(znac);
+            DataContext = this;
+        }
+
+        void chartCreation(ChartValues<int> znac)
+        {
             if (chartCreated != true)
             {
                 chartCreated = true;
@@ -96,14 +98,14 @@ namespace WpfApp2
                     },
 
                 };
-                YFormatter = value => "Period №" + (++value);
+                YFormatter = value => "Month №" + (++value);
             }
             else
             {
                 SeriesCollection[0].Values = znac;
             }
-            DataContext = this;
         }
+
         #region event handlers
         private void Button_Click(object sender, RoutedEventArgs e)
         {
