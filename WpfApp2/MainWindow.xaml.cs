@@ -40,6 +40,19 @@ namespace WpfApp2
             string passwordRepeat = textBoxPasswordRepeat.Password.Trim();
             string email = textBoxEmail.Text.ToLower().Trim();
 
+            dataValidation(ref loginCorrect, ref passwordCorrect, ref passwordRepeatCorrect, ref emailCorrect, login, password, email, passwordRepeat);
+
+            if (IsRegistrationDataCorrect(loginCorrect, passwordCorrect, passwordRepeatCorrect, emailCorrect))
+            {
+                clearData();
+                Print("Everithing is alright, you have been registrated");
+                createNewUser(login, password, email);
+                changeActiveWindow();
+            }
+        }
+
+        void dataValidation(ref bool loginCorrect , ref bool passwordCorrect, ref bool passwordRepeatCorrect,ref bool emailCorrect, string login, string password, string email, string passwordRepeat)
+        {
             if (loginValidation(login))
             {
                 loginCorrect = true;
@@ -83,15 +96,8 @@ namespace WpfApp2
                 textBoxEmail.ToolTip = "Email is incorrect";
                 textBoxEmail.Background = Brushes.DarkRed;
             }
-
-            if (IsRegistrationDataCorrect(loginCorrect, passwordCorrect, passwordRepeatCorrect, emailCorrect))
-            {
-                clearData();
-                Print("Everithing is alright, you have been registrated");
-                createNewUser(login, password, email);
-                changeActiveWindow();
-            }
         }
+
         bool IsRegistrationDataCorrect(bool loginCorrect, bool passwordCorrect, bool passwordRepeatCorrect, bool emailCorrect)
         {
             return (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect);
