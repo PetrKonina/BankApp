@@ -40,7 +40,7 @@ namespace WpfApp2
             string passwordRepeat = textBoxPasswordRepeat.Password.Trim();
             string email = textBoxEmail.Text.ToLower().Trim();
 
-            if (loginValidation())
+            if (loginValidation(login))
             {
                 loginCorrect = true;
                 textBoxLogin.Background = Brushes.White;
@@ -51,7 +51,7 @@ namespace WpfApp2
                 textBoxLogin.Background = Brushes.DarkRed;
             }
 
-            if (passwordValidation())
+            if (passwordValidation(password))
             {
                 passwordCorrect = true;
                 textBoxPassword.Background = Brushes.White;
@@ -84,84 +84,80 @@ namespace WpfApp2
                 textBoxEmail.Background = Brushes.DarkRed;
             }
 
-            if (IsRegistrationDataCorrect())
+            if (IsRegistrationDataCorrect(loginCorrect, passwordCorrect, passwordRepeatCorrect, emailCorrect))
             {
                 clearData();
                 Print("Everithing is alright, you have been registrated");
-
-                createNewUser();
-
+                createNewUser(login, password, email);
                 changeActiveWindow();
             }
+        }
+        bool IsRegistrationDataCorrect(bool loginCorrect, bool passwordCorrect, bool passwordRepeatCorrect, bool emailCorrect)
+        {
+            return (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect);
+        }
 
-            bool IsRegistrationDataCorrect()
+        bool CheckingEmail(string emailAddress)
+        {
+            try
             {
-                return (loginCorrect && passwordCorrect && passwordRepeatCorrect && emailCorrect);
+                MailAddress m = new MailAddress(emailAddress);
+
+                return true;
             }
-
-            bool CheckingEmail(string emailAddress)
+            catch (FormatException)
             {
-                try
-                {
-                    MailAddress m = new MailAddress(emailAddress);
-
-                    return true;
-                }
-                catch (FormatException)
-                {
-                    return false;
-                }
-            }
-
-            bool loginValidation()
-            {
-                Regex startsWithCharacter = new Regex(@"^[a-zA-Z]");
-                Regex hasBeetween8And15Chars = new Regex(@".{5,15}");
-
-                return startsWithCharacter.IsMatch(login) && hasBeetween8And15Chars.IsMatch(login);
-            }
-
-            bool passwordValidation()
-            {
-                Regex hasNumber = new Regex(@"[0-9]+");
-                Regex hasUpperChar = new Regex(@"[A-Z]+");
-                Regex hasBeetween8And15Chars = new Regex(@".{8,15}");
-
-                return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasBeetween8And15Chars.IsMatch(password);
-            }
-
-            void changeActiveWindow()
-            {
-                userPage userPageShow = new userPage();
-                userPageShow.Show();
-                Hide();
-            }
-
-            void clearData()
-            {
-                textBoxLogin.ToolTip = null;
-                textBoxLogin.Background = Brushes.Transparent;
-                textBoxPassword.ToolTip = null;
-                textBoxPassword.Background = Brushes.Transparent;
-                textBoxPasswordRepeat.ToolTip = null;
-                textBoxPasswordRepeat.Background = Brushes.Transparent;
-                textBoxEmail.ToolTip = null;
-                textBoxEmail.Background = Brushes.Transparent;
-            }
-
-            void createNewUser() 
-            {
-                User user = new User(login, password, email);
-                db.Users.Add(user);
-                db.SaveChanges();
-            }
-
-            void Print(string text)
-            {
-                MessageBox.Show(text);
+                return false;
             }
         }
 
+        bool loginValidation(string login)
+        {
+            Regex startsWithCharacter = new Regex(@"^[a-zA-Z]");
+            Regex hasBeetween8And15Chars = new Regex(@".{5,15}");
+
+            return startsWithCharacter.IsMatch(login) && hasBeetween8And15Chars.IsMatch(login);
+        }
+
+        bool passwordValidation(string password)
+        {
+            Regex hasNumber = new Regex(@"[0-9]+");
+            Regex hasUpperChar = new Regex(@"[A-Z]+");
+            Regex hasBeetween8And15Chars = new Regex(@".{8,15}");
+
+            return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password) && hasBeetween8And15Chars.IsMatch(password);
+        }
+
+        void changeActiveWindow()
+        {
+            userPage userPageShow = new userPage();
+            userPageShow.Show();
+            Hide();
+        }
+
+        void clearData()
+        {
+            textBoxLogin.ToolTip = null;
+            textBoxLogin.Background = Brushes.Transparent;
+            textBoxPassword.ToolTip = null;
+            textBoxPassword.Background = Brushes.Transparent;
+            textBoxPasswordRepeat.ToolTip = null;
+            textBoxPasswordRepeat.Background = Brushes.Transparent;
+            textBoxEmail.ToolTip = null;
+            textBoxEmail.Background = Brushes.Transparent;
+        }
+
+        void createNewUser(string login, string password, string email)
+        {
+            User user = new User(login, password, email);
+            db.Users.Add(user);
+            db.SaveChanges();
+        }
+
+        void Print(string text)
+        {
+            MessageBox.Show(text);
+        }
         private void Button_sign_in_Click(object sender, RoutedEventArgs e)
         {
             AuthorizationWindow authorizationWindow = new AuthorizationWindow();
